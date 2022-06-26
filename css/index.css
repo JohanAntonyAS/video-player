@@ -1,0 +1,156 @@
+@import './button.css';
+
+:root {
+  --Primary: #43DDE6;
+  --White: #ffffff;
+  --widthBar: 0%;
+}
+
+input[type=range] {
+  display: block;
+  -webkit-appearance: none;
+  border-radius: 4px;
+  height: 4px;
+  cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  background-color: transparent;
+  position: relative;
+  -webkit-appearance: none;
+  height: 4px;
+  width: 4px;
+  box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, .2);
+}
+
+input[type=range]::-webkit-slider-runnable-track,
+input[type=range]::-moz-range-progress {
+  height: 4px;
+  width: 100%;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: 1px solid grey;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+h1 {
+  color: var(--Primary)
+}
+
+body {
+  background-color: var(--Primary);
+  font-family: 'Lato';
+}
+
+.wrapper {
+  max-inline-size: 900px;
+  margin: auto;
+}
+
+.player {
+  position: relative;
+  margin-block-start: 50px;
+}
+
+.player video {
+  inline-size: 100%;
+  aspect-ratio: 16/9;
+  vertical-align: middle;
+  object-fit: cover;
+}
+
+.player-title {
+  position: absolute;
+  color: var(--White);
+  inset-block-start: 0;
+  inset-inline-start: 20px;
+  font-weight: 200;
+  font-size: 1.2em;
+}
+
+.player-actions {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.player-progress {
+  position: absolute;
+  display: flex;
+  inset-block-end: 0;
+  inset-inline: 0;
+  padding: 14px 10px;
+}
+
+.player-progress input {
+  flex: 1;
+  margin: 0;
+  width: 100%;
+}
+
+.player-progress input::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  height: 4px;
+  width: var(--widthBar);
+  border-radius: 4px;
+  background-color: #237CCE;
+}
+
+.player-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: 0.3s opacity;
+}
+
+.player:hover .player-overlay {
+  opacity: 1;
+}
+
+.player-tooltip {
+  position: absolute;
+  top: 0px;
+  left: 3.5%;
+  min-width: 21px;
+  height: 10px;
+  border-radius: 4px;
+  transform: translateX(-100%);
+  z-index: 10;
+}
+
+.player-content {
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+
+.tooltipValue {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -45px;
+  left: -10px;
+  height: 21px;
+  min-width: 21px;
+  padding: 4px 8px;
+  background-color: #090B0B;
+  color: #ffffff;
+  font-size: 10px;
+  border-radius: 4px;
+  text-align: center;
+  user-select: none;
+}
+
+@media (max-width: 360px) {
+  .wrapper {
+    inline-size: 328px;
+  }
+}

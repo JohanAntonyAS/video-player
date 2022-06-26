@@ -1,0 +1,35 @@
+.button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    inline-size: 32px;
+    block-size: 32px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.button:active {
+    transform: scale(0.9);
+}
+
+#play,
+#pause {
+    margin: 0 24px;
+}
+
+#backward {
+    background-image: url('../icons/icons8-reset 2.svg');
+}
+
+#forward {
+    background-image: url('../icons/icons8-reset 1.svg');
+}
+
+#play {
+    background-image: url('../icons/icons8-circled_play 1.svg');
+}
+
+#pause {
+    background-image: url('../icons/icons8-pause_button 1.svg');
+}

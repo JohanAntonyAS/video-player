@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/index.css">
+  <title>Video Player</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="player">
+      <video id="video" poster="./images/poster.jpg" src="https://media.w3.org/2010/05/sintel/trailer.mp4"></video>
+      <div class="player-overlay">
+        <h2 class="player-title">Música para programar</h2>
+        <div class="player-actions">
+          <button class="button" id="backward" aria-label="Retroceder 10 segundos"
+            title="Retroceder 10 segundos"></button>
+          <button class="button" id="play" aria-label="Reproducir" title="Reproducir"></button>
+          <button class="button" hidden id="pause" aria-label="Pausar" title="Pausar"></button>
+          <button class="button" id="forward" aria-label="Adelantar 10 segundos" title="Adelantar 10 segundos"></button>
+        </div>
+        <div class="player-progress">
+          <div class="player-content">
+            <div id="tooltip" class="player-tooltip">
+              <div id="tValue" class="tooltipValue"></div>
+            </div>
+            <input id="progress" preload="auto" autocomplete="off" type="range" min="0" value="0">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/script.js"></script>
+</body>
+
+</html>
