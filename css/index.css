@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 @import './button.css';
 
 :root {
@@ -5,6 +12,10 @@
   --White: #ffffff;
   --widthBar: 0%;
 }
+
+
+/* integrar compatibilidad con otros navegadores */
+
 
 input[type=range] {
   display: block;
@@ -20,17 +31,33 @@ input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   height: 4px;
   width: 4px;
-  box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, .2);
 }
 
-input[type=range]::-webkit-slider-runnable-track,
-input[type=range]::-moz-range-progress {
+input[type=range]::-webkit-slider-runnable-track {
   height: 4px;
   width: 100%;
   border-radius: 4px;
   background-color: #ffffff;
   border: 1px solid grey;
 }
+
+input[type=range]::-moz-range-thumb {
+  background-color: transparent;
+  display: none !important;
+  height: 4px;
+  width: 4px;
+  outline: none;
+  border: none;
+}
+
+input[type=range]::-moz-range-track {}
+
+input[type=range]::-moz-range-progress {
+  background-color: #237CCE;
+  border-radius: 4px;
+  height: 4px;
+}
+
 
 input[type=range]:focus {
   outline: none;
@@ -52,6 +79,7 @@ body {
 
 .player {
   position: relative;
+  -webkit-margin-before: 50px;
   margin-block-start: 50px;
 }
 
@@ -59,6 +87,7 @@ body {
   inline-size: 100%;
   aspect-ratio: 16/9;
   vertical-align: middle;
+  -o-object-fit: cover;
   object-fit: cover;
 }
 
@@ -74,13 +103,21 @@ body {
 .player-actions {
   position: absolute;
   inset: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
 .player-progress {
   position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   inset-block-end: 0;
   inset-inline: 0;
@@ -88,6 +125,8 @@ body {
 }
 
 .player-progress input {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
   flex: 1;
   margin: 0;
   width: 100%;
@@ -107,6 +146,8 @@ body {
   position: absolute;
   inset: 0;
   opacity: 0;
+  -webkit-transition: 0.3s opacity;
+  -o-transition: 0.3s opacity;
   transition: 0.3s opacity;
 }
 
@@ -121,20 +162,30 @@ body {
   min-width: 21px;
   height: 10px;
   border-radius: 4px;
+  -webkit-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
   transform: translateX(-100%);
   z-index: 10;
 }
 
 .player-content {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   position: relative;
 }
 
 .tooltipValue {
   position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   top: -45px;
   left: -10px;
@@ -146,6 +197,9 @@ body {
   font-size: 10px;
   border-radius: 4px;
   text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 
