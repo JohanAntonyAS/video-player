@@ -34,8 +34,8 @@ function handlePause() {
         tooltip.style.left = porcent + "%";
     }
 
-    if (porcent >= "97.5") {
-        tooltip.style.left = "97.5%";
+    if (porcent >= "97") {
+        tooltip.style.left = "97%";
     }
 }
 
@@ -43,14 +43,14 @@ $backward.addEventListener('click', handleBackward);
 
 function handleBackward() {
     $video.currentTime = $video.currentTime - 10;
-    tValue.innerHTML = secondsToString($video.currentTime); // console.log('retroceder', $video.currentTime)
+    tValue.innerHTML = secondsToString($video.currentTime);
 
     if (porcent >= "3.50") {
         tooltip.style.left = porcent + "%";
     }
 
-    if (porcent >= "97.5") {
-        tooltip.style.left = "97.5%";
+    if (porcent >= "97") {
+        tooltip.style.left = "97%";
     }
 }
 
@@ -58,14 +58,14 @@ $forward.addEventListener('click', handleForward);
 
 function handleForward() {
     $video.currentTime = $video.currentTime + 10;
-    tValue.innerHTML = secondsToString($video.currentTime); // console.log('adelante', $video.currentTime)
+    tValue.innerHTML = secondsToString($video.currentTime);
 
     if (porcent >= "3.50") {
         tooltip.style.left = porcent + "%";
     }
 
-    if (porcent >= "97.5") {
-        tooltip.style.left = "97.5%";
+    if (porcent >= "97") {
+        tooltip.style.left = "97%";
     }
 }
 
@@ -75,6 +75,7 @@ $progress.addEventListener('input', handleInput);
 
 function handleLoaded() {
     $progress.max = $video.duration;
+    tValue.innerHTML = "00:00:00";
 }
 
 function handleTimeUpdate() {
@@ -84,13 +85,20 @@ function handleTimeUpdate() {
 
     if (porcent >= "3.50") {
         tooltip.style.left = porcent + "%";
+    } else {
+        tooltip.style.left = "3.5%";
     }
 
-    if (porcent >= "97.5") {
-        tooltip.style.left = "97.5%";
+    if (porcent >= "97") {
+        tooltip.style.left = "97%";
     }
 
     $widthBar.setProperty("--widthBar", `${porcent}%`);
+
+    if ($video.ended) {
+        $play.hidden = false;
+        $pause.hidden = true;
+    }
 }
 
 tValue.innerHTML = $video.currentTime;
@@ -104,11 +112,11 @@ function handleInput() {
         tooltip.style.left = porcent + "%";
     }
 
-    if (porcent >= "97.5") {
-        tooltip.style.left = "97.5%";
+    if (porcent >= "97") {
+        tooltip.style.left = "97%";
     }
 
-    $widthBar.setProperty("--widthBar", `${porcent}%`); // console.log($video.currentTime + "handleInput")
+    $widthBar.setProperty("--widthBar", `${porcent}%`);
 }
 
 function secondsToString(xyz) {
@@ -117,7 +125,7 @@ function secondsToString(xyz) {
     var minute = Math.floor(xyz / 60 % 60);
     minute = Math.round(minute) <= 9 ? '0' + Math.round(minute) : Math.round(minute);
     var second = xyz % 60;
-    second = Math.round(second) <= 9 ? '0' + Math.round(second) : Math.round(second); // console.log(second)
+    second = Math.round(second) <= 9 ? '0' + Math.round(second) : Math.round(second);
 
     return hour + ':' + minute + ':' + second;
 }
